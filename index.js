@@ -56,14 +56,12 @@ function wagesEarnedOnDate(employeeRecord, date){
 
   function allWagesFor(employeeRecord) {
     const arrayOfWages = [];
-    let arrayOfDays = employeeRecord.time
-    let eligibleDays=arrayOfDays.map(element=> element.date)
-    eligibleDays.forEach(date=> {
-      arrayOfWages.push( wagesEarnedOnDate( employeeRecord, date) )
-      return (arrayOfWages.reduce( ( acc, num ) => acc + num ));
-    })
-    
-  }
+    let eligibleDays=employeeRecord.timeInEvents.map(element=> element.date)
+    let pay = eligibleDays.reduce( ( acc, num ) => acc + num,0)
+    return acc+ wagesEarnedOnDate(employeeRecord, date)
+    }
+  
+  
   allWagesFor()
 
 
