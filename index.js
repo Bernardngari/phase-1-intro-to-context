@@ -52,17 +52,22 @@ function hoursWorkedOnDate(employeeRecord,date){
 function wagesEarnedOnDate(employeeRecord, date){
   let payrate = employeeRecord.payPerHour;
   return (hoursWorkedOnDate( employeeRecord, date ) * payrate)
-}
+}  acc+ wagesEarnedOnDate(employeeRecord, date)
 
   function allWagesFor(employeeRecord) {
-    const arrayOfWages = [];
-    let eligibleDays=employeeRecord.timeInEvents.map(element=> element.date)
-    let pay = eligibleDays.reduce( ( acc, num ) => acc + num,0)
-    return acc+ wagesEarnedOnDate(employeeRecord, date)
+    let eligibleDays = employeeRecord.timeInEvents.map( element =>{
+      return element.date;
+    });
+    
+    let pay = eligibleDays.reduce(( acc, num ) => {
+         return acc+ wagesEarnedOnDate(employeeRecord,num)
+    },0)
+    
+   return pay
     }
   
   
-  allWagesFor()
+  
 
 
 
